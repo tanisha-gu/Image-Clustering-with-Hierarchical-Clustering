@@ -220,6 +220,4 @@ labels, model = cluster_images(X_pca, n_clusters=4)
 
 ---
 
-## 📄 License
 
-MIT — free for personal and commercial use.

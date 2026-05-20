@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Image Clustering Report</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap');
+  :root{--bg:#090909;--surface:#111;--border:#222;--text:#e8e8e8;--muted:#666;--accent:#e63946;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;padding:2rem 1rem;}
+  header{text-align:center;margin-bottom:3rem;}
+  header h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-2px;}
+  header h1 span{color:var(--accent);}
+  header p{color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.85rem;margin-top:.5rem;}
+  .stats-row{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:3rem;}
+  .stat-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem 2rem;text-align:center;}
+  .stat-box .val{font-size:2rem;font-weight:800;color:var(--accent);}
+  .stat-box .lbl{font-size:.75rem;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:.2rem;}
+  h2{font-size:1.4rem;margin:2.5rem 0 1rem;border-bottom:1px solid var(--border);padding-bottom:.5rem;}
+  .viz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-bottom:2rem;}
+  .viz-grid img{width:100%;border-radius:10px;border:1px solid var(--border);}
+  .cluster-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .card-header{display:flex;justify-content:space-between;align-items:center;padding:.75rem 1rem;border-bottom:1px solid var(--border);}
+  .chip{padding:.25rem .7rem;border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;}
+  .count{color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.8rem;}
+  .card img{width:100%;display:block;}
+  table{width:100%;border-collapse:collapse;font-family:'JetBrains Mono',monospace;font-size:.85rem;}
+  th,td{padding:.7rem 1rem;border-bottom:1px solid var(--border);text-align:right;}
+  th{color:var(--muted);font-weight:400;text-align:right;}
+  th:first-child,td:first-child{text-align:left;}
+  .best-row td{color:#e9c46a;font-weight:700;}
+  .best-row td:first-child::after{content:' ';}
+  footer{text-align:center;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem;margin-top:4rem;}
+</style>
+</head>
+<body>
+<header>
+  <h1>Image <span>Clustering</span> Report</h1>
+  <p>Hierarchical (Agglomerative) Clustering · HOG Features · PCA Reduction</p>
+</header>
+
+<div class="stats-row">
+  <div class="stat-box"><div class="val">75</div><div class="lbl">total images</div></div>
+  <div class="stat-box"><div class="val">2</div><div class="lbl">optimal clusters</div></div>
+  <div class="stat-box"><div class="val">0.139</div><div class="lbl">silhouette score</div></div>
+  <div class="stat-box"><div class="val">2.627</div><div class="lbl">davies-bouldin ↓</div></div>
+</div>
+
+<h2>Visualisations</h2>
+<div class="viz-grid">
+  <img src="dendrogram.png" alt="Dendrogram">
+  <img src="scatter.png" alt="Cluster Scatter">
+  <img src="k_sweep.png" alt="K Sweep">
+</div>
+
+<h2>Clusters</h2>
+<div class="cluster-grid">
+        <div class="card">
+          <div class="card-header" style="border-left:4px solid #e63946">
+            <span class="chip" style="background:#e6394622;color:#e63946">Cluster 0</span>
+            <span class="count">65 images</span>
+          </div>
+          <img src="cluster_0_grid.png" alt="Cluster 0 grid" loading="lazy">
+        </div>
+        <div class="card">
+          <div class="card-header" style="border-left:4px solid #457b9d">
+            <span class="chip" style="background:#457b9d22;color:#457b9d">Cluster 1</span>
+            <span class="count">10 images</span>
+          </div>
+          <img src="cluster_1_grid.png" alt="Cluster 1 grid" loading="lazy">
+        </div></div>
+
+<h2>Metric Sweep (k = 2 → 6)</h2>
+<table>
+  <thead><tr><th>k</th><th>Silhouette ↑</th><th>Davies-Bouldin ↓</th><th>Calinski-Harabasz ↑</th></tr></thead>
+  <tbody>
+        <tr class="best-row">
+          <td>2 ★</td>
+          <td>0.1394</td>
+          <td>2.6271</td>
+          <td>4.9</td>
+        </tr>
+        <tr class="">
+          <td>3</td>
+          <td>0.0986</td>
+          <td>2.6820</td>
+          <td>4.8</td>
+        </tr>
+        <tr class="">
+          <td>4</td>
+          <td>0.0741</td>
+          <td>2.5364</td>
+          <td>4.8</td>
+        </tr>
+        <tr class="">
+          <td>5</td>
+          <td>0.0836</td>
+          <td>2.4462</td>
+          <td>4.8</td>
+        </tr>
+        <tr class="">
+          <td>6</td>
+          <td>0.0840</td>
+          <td>2.1954</td>
+          <td>4.9</td>
+        </tr></tbody>
+</table>
+
+<footer><p>Generated by image_clustering · Hierarchical Agglomerative Clustering</p></footer>
+</body>
+</html>

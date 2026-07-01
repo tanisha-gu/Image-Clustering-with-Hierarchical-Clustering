@@ -1,11 +1,11 @@
-# 🖼️ Image Clustering with Hierarchical (Agglomerative) Clustering
+#  Image Clustering with Hierarchical (Agglomerative) Clustering
 
 Unsupervised image organisation using **HOG / CNN features → PCA → Agglomerative Clustering**.  
 No labels required. Automatically groups visually similar images and produces a full HTML report.
 
 ---
 
-## ✨ Features
+##  Features
 
 | Feature | Details |
 |---|---|
@@ -44,7 +44,7 @@ image_clustering/
 
 ---
 
-## ⚡ Quick Start
+##  Quick Start
 
 ### 1 — Clone / Download
 
@@ -84,7 +84,7 @@ Subfolders are searched recursively.
 
 ---
 
-## 🎛️ All Options
+##  All Options
 
 ```
 python cluster.py [OPTIONS]
@@ -119,7 +119,7 @@ python cluster.py --data ./my_photos --linkage complete --k_min 3 --k_max 10
 
 ---
 
-## 🔬 How It Works
+##  How It Works
 
 ```
 Images
@@ -177,7 +177,7 @@ The HTML report displays all three metrics for each value of k.
 
 ---
 
-## 🗒️ Interactive Notebook
+##  Interactive Notebook
 
 ```bash
 pip install jupyter
@@ -207,7 +207,7 @@ labels, model = cluster_images(X_pca, n_clusters=4)
 
 ---
 
-## 🔧 Troubleshooting
+##  Troubleshooting
 
 | Problem | Fix |
 |---|---|

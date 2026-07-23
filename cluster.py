@@ -1,11 +1,11 @@
-"""
-Image Clustering using Hierarchical (Agglomerative) Clustering
-=============================================================
-Extracts deep features from images using a pretrained CNN,
-reduces dimensionality with PCA + UMAP, then clusters with
-Agglomerative Clustering. Saves a full HTML report and
-per-cluster image grids.
-"""
+#======================================================================
+#  Image Clustering using Hierarchical (Agglomerative) Clustering
+#=====================================================================
+# Extracts deep features from images using a pretrained CNN,
+# reduces dimensionality with PCA + UMAP, then clusters with
+# Agglomerative Clustering. Saves a full HTML report and
+# per-cluster image grids.
+
 
 import os
 import sys
@@ -492,7 +492,7 @@ def main():
     save_cluster_grids(image_paths, labels, out_dir)
     build_html_report(image_paths, labels, scores, best_k, out_dir)
 
-    print(f"\n✅  Done!  Open  results/report.html  to explore the clusters.")
+    print(f"\n  Done!  Open  results/report.html  to explore the clusters.")
 
 
 if __name__ == "__main__":

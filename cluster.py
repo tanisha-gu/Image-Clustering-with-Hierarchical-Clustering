@@ -1,11 +1,6 @@
 #======================================================================
 #  Image Clustering using Hierarchical (Agglomerative) Clustering
 #=====================================================================
-# Extracts deep features from images using a pretrained CNN,
-# reduces dimensionality with PCA + UMAP, then clusters with
-# Agglomerative Clustering. Saves a full HTML report and
-# per-cluster image grids.
-
 
 import os
 import sys

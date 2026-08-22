@@ -20,7 +20,7 @@ No labels required. Automatically groups visually similar images and produces a 
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 image_clustering/
